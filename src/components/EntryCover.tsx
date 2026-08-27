@@ -27,7 +27,7 @@ export function EntryCover({ entry }: EntryCoverProps) {
           height={640}
           loading="lazy"
           decoding="async"
-          className="border-ink-200 aspect-[3/2] w-full rounded-xl border object-cover"
+          className="border-ink-200 dark:border-ink-800 aspect-[3/2] w-full rounded-xl border object-cover"
         />
         {entry.image.credit ? (
           <figcaption className="text-ink-400 mt-1.5 text-[0.6875rem] leading-snug">
@@ -47,7 +47,7 @@ export function EntryCover({ entry }: EntryCoverProps) {
   return (
     <div
       aria-hidden="true"
-      className="border-ink-200 relative aspect-[3/2] w-full shrink-0 overflow-hidden rounded-xl border sm:order-last sm:w-56"
+      className="border-ink-200 dark:border-ink-800 relative aspect-[3/2] w-full shrink-0 overflow-hidden rounded-xl border sm:order-last sm:w-56"
       style={{
         backgroundImage: `linear-gradient(135deg, oklch(0.72 0.16 ${hue}), oklch(0.44 0.19 ${hue + 26}))`,
       }}

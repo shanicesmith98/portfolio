@@ -13,12 +13,12 @@ export function Hero({ profile }: HeroProps) {
   return (
     <section
       id="top"
-      className="from-brand-100/70 relative scroll-mt-24 overflow-hidden bg-gradient-to-b to-transparent px-4 pt-10 pb-10 sm:px-6 sm:pt-16 sm:pb-14"
+      className="from-brand-100/70 dark:from-brand-500/15 relative scroll-mt-24 overflow-hidden bg-gradient-to-b to-transparent px-4 pt-10 pb-10 sm:px-6 sm:pt-16 sm:pb-14"
     >
       {/* Dot lattice. Fades out before it reaches the intro paragraph. */}
       <div
         aria-hidden="true"
-        className="text-brand-500/25 pointer-events-none absolute inset-0"
+        className="text-brand-500/25 dark:text-brand-300/25 pointer-events-none absolute inset-0"
         style={{
           backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)',
           backgroundSize: '18px 18px',
@@ -34,14 +34,14 @@ export function Hero({ profile }: HeroProps) {
             alt=""
             width={160}
             height={160}
-            className="ring-brand-300/60 h-28 w-28 shrink-0 rounded-2xl object-cover shadow-sm ring-1 sm:h-40 sm:w-40"
+            className="ring-brand-300/60 dark:ring-brand-500/50 h-28 w-28 shrink-0 rounded-2xl object-cover shadow-sm ring-1 sm:h-40 sm:w-40"
           />
 
           <div className="min-w-0">
-            <h1 className="text-hero text-ink-950 leading-[1.05] font-bold tracking-tight text-balance">
+            <h1 className="text-hero text-ink-950 dark:text-ink-50 leading-[1.05] font-bold tracking-tight text-balance">
               {profile.name}
             </h1>
-            <p className="text-brand-700 mt-2.5 text-lg leading-snug font-medium text-pretty sm:text-xl">
+            <p className="text-brand-700 dark:text-brand-300 mt-2.5 text-lg leading-snug font-medium text-pretty sm:text-xl">
               {profile.headline}
             </p>
             {profile.location ? (
@@ -53,7 +53,7 @@ export function Hero({ profile }: HeroProps) {
           </div>
         </div>
 
-        <p className="text-ink-600 mt-7 max-w-2xl text-base leading-relaxed text-pretty sm:text-lg">
+        <p className="text-ink-600 dark:text-ink-400 mt-7 max-w-2xl text-base leading-relaxed text-pretty sm:text-lg">
           {profile.intro}
         </p>
       </div>

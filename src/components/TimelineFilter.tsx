@@ -28,7 +28,7 @@ export function TimelineFilter({ value, onChange }: TimelineFilterProps) {
     <div
       role="group"
       aria-label="Filter timeline"
-      className="border-ink-200 flex flex-wrap gap-1 rounded-lg border p-1"
+      className="border-ink-200 dark:border-ink-800 flex flex-wrap gap-1 rounded-lg border p-1"
     >
       {OPTIONS.map((option) => {
         const isActive = option.value === value;
@@ -42,7 +42,7 @@ export function TimelineFilter({ value, onChange }: TimelineFilterProps) {
             className={
               isActive
                 ? 'bg-brand-600 inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-white'
-                : 'text-ink-600 hover:bg-ink-100 inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors'
+                : 'text-ink-600 hover:bg-ink-100 dark:text-ink-100 dark:hover:bg-ink-800 inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors'
             }
           >
             <Icon aria-hidden="true" className="h-3.5 w-3.5" />

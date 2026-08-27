@@ -1,6 +1,7 @@
 import { UserRound, type LucideIcon } from 'lucide-react';
 import type { SectionId } from '../content/schema';
 import { SECTIONS } from './sections';
+import { ThemeToggle } from './ThemeToggle';
 
 type AnchorNavProps = {
   /** The page's sections, in page order. The nav follows it exactly. */
@@ -32,21 +33,24 @@ export function AnchorNav({ sections }: AnchorNavProps) {
   return (
     <nav
       aria-label="Sections"
-      className="bg-ink-50/90 border-ink-200 sticky top-0 z-10 border-b backdrop-blur"
+      className="bg-ink-50/90 border-ink-200 dark:bg-ink-950/90 dark:border-ink-800 sticky top-0 z-10 border-b backdrop-blur"
     >
-      <ul className="mx-auto flex max-w-3xl gap-1 overflow-x-auto px-2 py-2 sm:px-6">
-        {items.map(({ id, label, Icon }) => (
-          <li key={id}>
-            <a
-              href={`#${id}`}
-              className="text-ink-600 hover:bg-brand-100 hover:text-brand-700 flex items-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors"
-            >
-              <Icon aria-hidden="true" className="h-4 w-4" />
-              {label}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <div className="mx-auto flex max-w-3xl items-center gap-1 px-2 py-2 sm:px-6">
+        <ul className="flex flex-1 gap-1 overflow-x-auto">
+          {items.map(({ id, label, Icon }) => (
+            <li key={id}>
+              <a
+                href={`#${id}`}
+                className="text-ink-600 hover:bg-brand-100 hover:text-brand-700 dark:text-ink-100 dark:hover:bg-ink-800 dark:hover:text-brand-300 flex items-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors"
+              >
+                <Icon aria-hidden="true" className="h-4 w-4" />
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <ThemeToggle />
+      </div>
     </nav>
   );
 }

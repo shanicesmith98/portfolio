@@ -1,6 +1,14 @@
 @import 'tailwindcss';
 
 /*
+ * Opts into class-based dark mode instead of Tailwind's default, which only
+ * follows `prefers-color-scheme` and cannot be overridden by anything on the
+ * page. `public/theme-init.js` sets this class before first paint, and
+ * `ThemeToggle` flips it after. See ADR-010.
+ */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
  * Tailwind v4 keeps design tokens in CSS, not in a JS config file.
  * Anything you declare here becomes a utility: --color-brand-500 gives you
  * bg-brand-500, text-brand-500, border-brand-500, and so on.
@@ -37,10 +45,15 @@
     scroll-behavior: smooth;
     /* Anchor targets should not hide under the sticky nav. */
     scroll-padding-top: 5rem;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
   }
 
   body {
-    @apply bg-ink-50 text-ink-800 font-sans antialiased;
+    @apply bg-ink-50 text-ink-800 font-sans antialiased dark:bg-ink-950 dark:text-ink-100;
   }
 
   /* Visible focus on everything interactive, in one rule, for everyone. */

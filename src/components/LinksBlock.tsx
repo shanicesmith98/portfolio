@@ -28,8 +28,8 @@ export function LinksBlock({ links, resumeUrl }: LinksBlockProps) {
     // made the spacing depend on the order, and `profile.sections` can change
     // that. See ADR-006.
     <section id="links" className="scroll-mt-24 px-4 py-10 sm:px-6 sm:py-14">
-      <div className="border-ink-200 from-brand-100/60 mx-auto max-w-3xl rounded-2xl border bg-gradient-to-br to-white p-6 sm:p-9">
-        <h2 className="text-ink-950 flex items-center gap-2.5 text-2xl font-bold tracking-tight sm:text-3xl">
+      <div className="border-ink-200 dark:border-ink-800 from-brand-100/60 dark:from-brand-500/15 mx-auto max-w-3xl rounded-2xl border bg-gradient-to-br to-white p-6 sm:p-9 dark:to-ink-950">
+        <h2 className="text-ink-950 dark:text-ink-50 flex items-center gap-2.5 text-2xl font-bold tracking-tight sm:text-3xl">
           <span className="bg-brand-600 grid h-9 w-9 shrink-0 place-items-center rounded-lg text-white">
             <Send aria-hidden="true" className="h-4.5 w-4.5" />
           </span>
@@ -44,7 +44,7 @@ export function LinksBlock({ links, resumeUrl }: LinksBlockProps) {
                 <a
                   href={link.href}
                   {...externalLinkProps(link.href)}
-                  className="border-ink-200 text-ink-800 hover:border-brand-500 hover:text-brand-700 inline-flex items-center gap-2 rounded-lg border bg-white px-4 py-2 font-medium shadow-xs transition-colors"
+                  className="border-ink-200 text-ink-800 hover:border-brand-500 hover:text-brand-700 dark:border-ink-800 dark:bg-ink-800 dark:text-ink-100 dark:hover:border-brand-400 dark:hover:text-brand-300 inline-flex items-center gap-2 rounded-lg border bg-white px-4 py-2 font-medium shadow-xs transition-colors"
                 >
                   <Icon aria-hidden="true" className="h-4 w-4" />
                   {link.label}
