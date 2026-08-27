@@ -7,10 +7,8 @@ export const profile: Profile = {
     "I'm a Software Engineer at the ACLU, rebuilding legacy page templates into accessible, mobile-first components that reach 1M+ monthly visitors across ACLU.org and 50+ affiliate sites. Before that, I worked on developer tooling at Twitter and built accessibility testing frameworks at Disney and EA Sports. Outside of work, I ship narrative games with indie teams through Gameheads, using C# and Unity.",
   location: 'New York City, NY',
   avatar: '/avatar-placeholder.svg',
-  // Swap this for your own resume: drop the file in `public/` and point at it,
-  // e.g. '/jane-doe-resume.pdf'. Remove the field entirely and the download
-  // button disappears - better than offering a recruiter the placeholder.
-  resumeUrl: '/resume-placeholder.pdf',
+
+  resumeUrl: '/Smith_Shanice_resume.pdf',
 
   // The page, top to bottom, under the hero. Move an id and the section and its
   // nav link move together; delete one and that section goes away entirely.
