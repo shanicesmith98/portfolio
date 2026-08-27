@@ -29,7 +29,9 @@ export const profile: Profile = {
       degree: 'Master of Science in Data Science',
       startDate: '2026-08',
       endDate: null,
-      highlights: [],
+      highlights: [
+        'Courses: Statistics and Probability for Data Analytics, Data Acquisition and Management'
+      ],
     },
     {
       id: 'cuny-citytech-bachelor',
@@ -219,7 +221,7 @@ export const profile: Profile = {
         'Mentored teammates in Git and GitHub, ensuring effective version control and collaboration.',
       ],
       tags: ['C#', 'Unity', 'Yarn Spinner'],
-      links: [],
+      links: [ { label: 'GitHub', href: 'https://github.com/NQ-bit/Nocturnal-Nightingale-Team' }, { label: 'itch.io', href: 'https://gameheads.itch.io/the-lament' } ],
     },
     {
       id: 'enjoy-your-stay-in-paradise',
@@ -237,7 +239,7 @@ export const profile: Profile = {
         'Implemented assets, scenes, gameplay scripts, and the dialogue system with C#, Unity, and Yarn Spinner.',
       ],
       tags: ['C#', 'Unity', 'Yarn Spinner', 'Trello'],
-      links: [],
+      links: [ { label: 'GitHub', href: 'https://github.com/shanicesmith98/gameheads-sap-bb-24' }, { label: 'itch.io', href: 'https://gameheads.itch.io/enjoy-your-stay-in-paradise' } ],
     },
     {
       id: 'the-last-harvest',
