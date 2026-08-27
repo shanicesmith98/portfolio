@@ -56,9 +56,25 @@
     @apply bg-ink-50 text-ink-800 font-sans antialiased dark:bg-ink-950 dark:text-ink-100;
   }
 
+  /*
+   * A constant outline-color, not just the :focus-visible value below -
+   * `outline-style` is `none` until focus, so nothing renders either way,
+   * but this leaves nothing for `transition-colors` (used throughout for
+   * hover states, and it includes outline-color) to animate when focus
+   * flips outline-style on. Without it, the ring transitions in from
+   * `currentColor`, its value the moment before - in dark mode that is
+   * often a near-white text colour, which showed up as a white flash before
+   * the ring settled on brand-600.
+   */
+  *,
+  ::before,
+  ::after {
+    outline-color: var(--color-brand-600);
+  }
+
   /* Visible focus on everything interactive, in one rule, for everyone. */
   :focus-visible {
-    @apply outline-brand-600 rounded-sm outline-2 outline-offset-2;
+    @apply rounded-sm outline-2 outline-offset-2;
   }
 
   @media (prefers-reduced-motion: reduce) {
