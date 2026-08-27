@@ -35,8 +35,18 @@ export function AnchorNav({ sections }: AnchorNavProps) {
       aria-label="Sections"
       className="bg-ink-50/90 border-ink-200 dark:bg-ink-950/90 dark:border-ink-800 sticky top-0 z-10 border-b backdrop-blur"
     >
-      <div className="mx-auto flex max-w-3xl items-center gap-1 px-2 py-2 sm:px-6">
-        <ul className="flex flex-1 gap-1 overflow-x-auto">
+      <div className="mx-auto flex max-w-3xl items-center gap-1 px-2 sm:px-6">
+        {/*
+          `overflow-x-auto` clips anything that overflows *this* element's own
+          box on both axes - setting only overflow-x still forces overflow-y
+          to clip too, per the CSS overflow spec - including a focused link's
+          outline (outline-2 outline-offset-2 extends ~4px past its edge).
+          `px-1 py-2` gives the ring room on all four sides, independent of
+          whatever padding the parent div has. Without it, the first and last
+          links lose their ring to the horizontal clip, and every link loses
+          the top and bottom of its ring to the vertical one.
+        */}
+        <ul className="flex flex-1 gap-1 overflow-x-auto px-1 py-2">
           {items.map(({ id, label, Icon }) => (
             <li key={id}>
               <a
