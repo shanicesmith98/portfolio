@@ -26,7 +26,8 @@ export const profile: Profile = {
     {
       id: 'cuny-sps-ms-data-science',
       institution: 'CUNY School of Professional Studies',
-      degree: 'Master of Science in Data Science',
+      degree: 'Master of Science',
+      field: 'Data Science',
       startDate: '2026-08',
       endDate: null,
       highlights: [
