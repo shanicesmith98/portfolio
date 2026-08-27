@@ -2,9 +2,9 @@ import type { Profile } from './schema.ts';
 
 export const profile: Profile = {
   name: 'Shanice Smith',
-  headline: 'Software Engineer. I build things for the web.',
+  headline: 'Software Engineer. I build tech that centers people.',
   intro:
-    "I'm a Software Engineer at the ACLU, rebuilding legacy page templates into accessible, mobile-first components that reach 1M+ monthly visitors across ACLU.org and 50+ affiliate sites. Before that, I worked on developer tooling at Twitter and built accessibility testing frameworks at Disney and EA Sports. Outside of work, I ship narrative games with indie teams through Gameheads, using C# and Unity.",
+    "Welcome! I'm Shanice (she/they) — a New York City-based Software Engineer who believes great tech starts with great empathy. I'm a queer, neurodiverse Black woman, and a self-proclaimed generalist. By day, I build interactive educational experiences at the ACLU. By night (and some weekends), I write narrative games in Unity with indie teams through Gameheads. Somewhere in between, I'm starting a Data Science master's program, volunteering in the tech community, and watching way too many musicals.",
   location: 'New York City, NY',
   avatar: '/avatar-placeholder.svg',
 
