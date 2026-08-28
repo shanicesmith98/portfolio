@@ -2,6 +2,7 @@ import { CalendarDays, GraduationCap, MapPin } from 'lucide-react';
 import type { EducationEntry as Entry } from '../content/schema';
 import { formatMonth } from '../lib/formatMonth';
 import { sortByDate } from '../lib/sortByDate';
+import { SectionHeading } from './SectionHeading';
 
 type EducationProps = {
   entries: Entry[];
@@ -21,12 +22,7 @@ export function Education({ entries }: EducationProps) {
   return (
     <section id="education" className="scroll-mt-24 px-4 py-10 sm:px-6 sm:py-14">
       <div className="mx-auto max-w-3xl">
-        <h2 className="text-ink-950 dark:text-ink-50 flex items-center gap-2.5 text-2xl font-bold tracking-tight sm:text-3xl">
-          <span className="bg-brand-100 text-brand-700 dark:bg-ink-800 dark:text-brand-300 grid h-9 w-9 shrink-0 place-items-center rounded-lg">
-            <GraduationCap aria-hidden="true" className="h-5 w-5" />
-          </span>
-          Education
-        </h2>
+        <SectionHeading icon={GraduationCap}>Education</SectionHeading>
 
         <ul className="mt-8 pl-1">
           {sorted.map((entry) => {

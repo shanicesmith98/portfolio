@@ -1,6 +1,7 @@
 import { Code2, Download, Globe, Mail, Send, Users } from 'lucide-react';
 import type { Link } from '../content/schema';
 import { externalLinkProps } from '../lib/externalLinkProps';
+import { SectionHeading } from './SectionHeading';
 
 /**
  * Pick an icon from where the link points, not from its label, so it still
@@ -29,12 +30,9 @@ export function LinksBlock({ links, resumeUrl }: LinksBlockProps) {
     // that. See ADR-006.
     <section id="links" className="scroll-mt-24 px-4 py-10 sm:px-6 sm:py-14">
       <div className="border-ink-200 dark:border-ink-800 from-brand-100/60 dark:from-brand-500/15 mx-auto max-w-3xl rounded-2xl border bg-gradient-to-br to-white p-6 sm:p-9 dark:to-ink-950">
-        <h2 className="text-ink-950 dark:text-ink-50 flex items-center gap-2.5 text-2xl font-bold tracking-tight sm:text-3xl">
-          <span className="bg-brand-600 grid h-9 w-9 shrink-0 place-items-center rounded-lg text-white">
-            <Send aria-hidden="true" className="h-4.5 w-4.5" />
-          </span>
+        <SectionHeading icon={Send} variant="solid">
           Get in touch
-        </h2>
+        </SectionHeading>
 
         <ul className="mt-5 flex flex-wrap gap-2">
           {links.map((link) => {

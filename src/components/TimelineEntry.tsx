@@ -3,7 +3,7 @@ import type { TimelineEntry as Entry } from '../content/schema';
 import { externalLinkProps } from '../lib/externalLinkProps';
 import { formatMonth } from '../lib/formatMonth';
 import { EntryCover } from './EntryCover';
-import { iconForTag } from './icon-map';
+import { TagPill } from './TagPill';
 
 type TimelineEntryProps = {
   entry: Entry;
@@ -82,17 +82,11 @@ export function TimelineEntry({ entry }: TimelineEntryProps) {
 
       {entry.tags.length > 0 ? (
         <ul aria-label="Tags" className="mt-4 flex flex-wrap gap-1.5">
-          {entry.tags.map((tag) => {
-            const TagIcon = iconForTag(tag);
-            return (
-              <li key={tag}>
-                <span className="border-ink-200 text-ink-600 dark:border-ink-800 dark:bg-ink-800 dark:text-ink-100 inline-flex items-center gap-1.5 rounded-full border bg-white px-2.5 py-1 text-xs font-medium">
-                  <TagIcon aria-hidden="true" className="text-brand-500 dark:text-brand-300 h-3 w-3" />
-                  {tag}
-                </span>
-              </li>
-            );
-          })}
+          {entry.tags.map((tag) => (
+            <li key={tag}>
+              <TagPill label={tag} />
+            </li>
+          ))}
         </ul>
       ) : null}
 

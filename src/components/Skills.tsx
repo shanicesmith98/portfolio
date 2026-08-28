@@ -1,6 +1,7 @@
 import { Wrench } from 'lucide-react';
 import type { SkillGroup } from '../content/schema';
-import { iconForTag } from './icon-map';
+import { SectionHeading } from './SectionHeading';
+import { TagPill } from './TagPill';
 
 type SkillsProps = {
   groups: SkillGroup[];
@@ -16,31 +17,20 @@ export function Skills({ groups }: SkillsProps) {
   return (
     <section id="skills" className="scroll-mt-24 px-4 py-10 sm:px-6 sm:py-14">
       <div className="mx-auto max-w-3xl">
-        <h2 className="text-ink-950 dark:text-ink-50 flex items-center gap-2.5 text-2xl font-bold tracking-tight sm:text-3xl">
-          <span className="bg-brand-100 text-brand-700 dark:bg-ink-800 dark:text-brand-300 grid h-9 w-9 shrink-0 place-items-center rounded-lg">
-            <Wrench aria-hidden="true" className="h-5 w-5" />
-          </span>
-          Skills
-        </h2>
+        <SectionHeading icon={Wrench}>Skills</SectionHeading>
 
         <div className="mt-8 space-y-6">
           {groups.map((group, index) => (
             <div key={`${group.label}-${index}`}>
-              <h3 className="text-ink-700 dark:text-ink-100 text-sm font-semibold tracking-[0.08em] uppercase">
+              <h3 className="text-ink-600 dark:text-ink-100 text-sm font-semibold tracking-[0.08em] uppercase">
                 {group.label}
               </h3>
               <ul className="mt-3 flex flex-wrap gap-1.5">
-                {group.skills.map((skill) => {
-                  const Icon = iconForTag(skill);
-                  return (
-                    <li key={skill}>
-                      <span className="border-ink-200 text-ink-600 dark:border-ink-800 dark:bg-ink-800 dark:text-ink-100 inline-flex items-center gap-1.5 rounded-full border bg-white px-2.5 py-1 text-xs font-medium">
-                        <Icon aria-hidden="true" className="text-brand-500 dark:text-brand-300 h-3 w-3" />
-                        {skill}
-                      </span>
-                    </li>
-                  );
-                })}
+                {group.skills.map((skill) => (
+                  <li key={skill}>
+                    <TagPill label={skill} />
+                  </li>
+                ))}
               </ul>
             </div>
           ))}

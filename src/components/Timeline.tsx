@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { History } from 'lucide-react';
 import type { TimelineEntry as Entry, TimelineFilterValue } from '../content/schema';
 import { sortByDate } from '../lib/sortByDate';
+import { SectionHeading } from './SectionHeading';
 import { TimelineEntry } from './TimelineEntry';
 import { TimelineFilter } from './TimelineFilter';
 
@@ -23,12 +24,7 @@ export function Timeline({ entries }: TimelineProps) {
       <div className="mx-auto max-w-3xl">
         <div className="border-ink-200 dark:border-ink-800 flex flex-wrap items-end justify-between gap-x-4 gap-y-3 border-b pb-4">
           <div>
-            <h2 className="text-ink-950 dark:text-ink-50 flex items-center gap-2.5 text-2xl font-bold tracking-tight sm:text-3xl">
-              <span className="bg-brand-100 text-brand-700 dark:bg-ink-800 dark:text-brand-300 grid h-9 w-9 shrink-0 place-items-center rounded-lg">
-                <History aria-hidden="true" className="h-5 w-5" />
-              </span>
-              Work and projects
-            </h2>
+            <SectionHeading icon={History}>Work and projects</SectionHeading>
             <p aria-live="polite" className="text-ink-400 mt-1 text-sm">
               Showing {visible.length} of {sorted.length}
             </p>
