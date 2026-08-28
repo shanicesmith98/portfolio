@@ -7,11 +7,25 @@
 // src/lib/theme.ts - this file is served from public/ as-is and cannot
 // import project code. tests/theme.test.ts asserts the two agree.
 (function () {
+  // Guarded independently: a thrown localStorage read (sandboxed iframe,
+  // privacy extension, partitioned storage) must not skip the system-
+  // preference check below, or a dark-preferring visitor silently gets
+  // the light theme instead.
+  var stored = null;
   try {
-    var stored = localStorage.getItem('theme');
-    var dark = stored === 'dark' || (stored !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    document.documentElement.classList.toggle('dark', dark);
+    stored = localStorage.getItem('theme');
   } catch (error) {
-    // localStorage or matchMedia unavailable - fall back to the light theme.
+    // Storage unavailable - fall through to the system preference.
   }
+
+  var dark = stored === 'dark';
+  if (stored !== 'light' && stored !== 'dark') {
+    try {
+      dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    } catch (error) {
+      // matchMedia unavailable - fall back to the light theme.
+    }
+  }
+
+  document.documentElement.classList.toggle('dark', dark);
 })();

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
-import { applyTheme, getStoredTheme, prefersDark, resolveTheme, storeTheme, type Theme } from '../lib/theme';
+import { applyTheme, getStoredTheme, resolveTheme, storeTheme, type Theme } from '../lib/theme';
 
 /**
  * A real <button>, not a three-way control - see ADR-010. Starts from
@@ -15,7 +15,7 @@ export function ThemeToggle() {
     const onChange = () => {
       // An explicit choice already exists - stop following the system.
       if (getStoredTheme()) return;
-      const next = prefersDark() ? 'dark' : 'light';
+      const next = resolveTheme();
       setTheme(next);
       applyTheme(next);
     };

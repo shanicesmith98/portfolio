@@ -28,6 +28,19 @@ describe('accessibility', () => {
     expect(results).toHaveNoViolations();
   }, 30_000);
 
+  /*
+   * Every other test here renders the light-mode tree - dark mode (ADR-010)
+   * changes nothing structurally, only classes, but had zero automated
+   * coverage of its own before this. tests/setup.ts resets the `dark` class
+   * afterwards regardless of outcome.
+   */
+  it('has zero axe violations in dark mode', async () => {
+    document.documentElement.classList.add('dark');
+    const { container } = render(<App />);
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  }, 30_000);
+
   it('has exactly one h1', () => {
     const { container } = render(<App />);
     expect(container.querySelectorAll('h1')).toHaveLength(1);

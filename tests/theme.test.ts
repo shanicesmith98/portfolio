@@ -15,6 +15,44 @@ describe('theme storage key', () => {
   });
 });
 
+/**
+ * The key matching above proves the two files agree on *where* to look, not
+ * that they agree on the *resolution rule* once they look. `theme-init.js`
+ * hand-reimplements resolveTheme()'s precedence because it cannot import it -
+ * this runs the actual shipped script against the actual jsdom document and
+ * checks it lands on the same theme resolveTheme() would, for every
+ * combination of stored choice and system preference. If someone changes one
+ * without the other, this is what catches it instead of CI staying green
+ * while the pre-paint script and the mounted app quietly disagree.
+ */
+describe('theme-init.js agrees with resolveTheme', () => {
+  const themeInitSource = readFileSync(join(process.cwd(), 'public/theme-init.js'), 'utf8');
+
+  function runThemeInit() {
+    new Function(themeInitSource)();
+  }
+
+  afterEach(() => {
+    localStorage.clear();
+    document.documentElement.classList.remove('dark');
+  });
+
+  it.each([
+    { stored: null, systemPrefersDark: true },
+    { stored: null, systemPrefersDark: false },
+    { stored: 'light' as const, systemPrefersDark: true },
+    { stored: 'dark' as const, systemPrefersDark: false },
+  ])('stored=$stored, system prefers dark=$systemPrefersDark', ({ stored, systemPrefersDark }) => {
+    if (stored) localStorage.setItem(THEME_STORAGE_KEY, stored);
+    mockSystemPrefersDark(systemPrefersDark);
+
+    runThemeInit();
+    const scriptAppliedDark = document.documentElement.classList.contains('dark');
+
+    expect(scriptAppliedDark).toBe(resolveTheme() === 'dark');
+  });
+});
+
 function mockSystemPrefersDark(matches: boolean) {
   window.matchMedia = vi.fn().mockReturnValue({
     matches,

@@ -65,6 +65,14 @@
    * `currentColor`, its value the moment before - in dark mode that is
    * often a near-white text colour, which showed up as a white flash before
    * the ring settled on brand-600.
+   *
+   * This alone is not enough in Firefox: Tailwind's preflight sets
+   * `:-moz-focusring:where(:not(iframe)) { outline: auto }`, and that
+   * pseudo-class (specificity 0,1,0) beats this universal selector
+   * (0,1,0 vs 0,0,0) regardless of source order, resetting the color back
+   * to `currentColor` the moment an element is actually focused. Repeating
+   * the color on `:focus-visible` below ties the specificity, and it wins
+   * on source order the way it did before this rule existed.
    */
   *,
   ::before,
@@ -74,7 +82,7 @@
 
   /* Visible focus on everything interactive, in one rule, for everyone. */
   :focus-visible {
-    @apply rounded-sm outline-2 outline-offset-2;
+    @apply outline-brand-600 rounded-sm outline-2 outline-offset-2;
   }
 
   @media (prefers-reduced-motion: reduce) {

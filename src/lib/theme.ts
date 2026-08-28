@@ -29,8 +29,18 @@ export function storeTheme(theme: Theme): void {
   }
 }
 
+/**
+ * `resolveTheme` runs during React's render phase (it seeds `ThemeToggle`'s
+ * `useState`), with no error boundary anywhere in the app - a thrown
+ * matchMedia would crash the whole tree instead of degrading to light, the
+ * one thing this function exists to avoid.
+ */
 export function prefersDark(): boolean {
-  return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  try {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  } catch {
+    return false;
+  }
 }
 
 /** The stored choice if there is one, otherwise the OS preference. */
